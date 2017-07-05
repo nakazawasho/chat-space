@@ -62,7 +62,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, unique: true|
-|body|text|------|
+|body|text||
 
 ## Association
 -belongs_to :user
@@ -73,7 +73,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, unique: true|
-|image_url|text|-------|
+|image_url|text||
 
 ## Association
 -belongs_to :message
