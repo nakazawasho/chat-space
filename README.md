@@ -12,27 +12,35 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-## membersテーブル
+## usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|null: false, unique: true|
+|name|string|null: false, add_index|
+|email|text|null: false, unique: true|
+|encrypted_password|
+|reset_password_tpken|
+|reset_password_sent_at|
+|remenber_created_at|
+|sign_in_count|integer|null: false|
+|current_sign_in_at|integer|null: false|
+|last_sign_in_at|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
-- belongs_to :user
+- belongs_to :members
 
-## menbersテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|email|
 
 ## groupsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|null: false, unique: true|
+|name|string|null:false|
+
 
 ## Association
 -
@@ -42,10 +50,18 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
+|id|integer|null: false, unique: true|
+|body|text|------|
 
 ## Association
 -
 -
+
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|id|integer|null: false, unique: true|
+|image_url|text|-------|
 
 
 
