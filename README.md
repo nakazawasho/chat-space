@@ -23,11 +23,30 @@ Things you may want to cover:
 - belongs_to :group
 - belongs_to :user
 
-## usersテーブル
+## menbersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |email|
+
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+
+## Association
+-
+-
+
+## messagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+
+## Association
+-
+-
+
 
 
 * Database initialization
