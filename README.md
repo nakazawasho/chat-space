@@ -39,19 +39,9 @@
 |Column|Type|Options|
 |------|----|-------|
 |body|text||
+|image|text||
 
 ## Association
 -belongs_to :user
 -belongs_to :group
 -has_many :image
-
-
-## imagesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|image_url|text||
-
-## Association
--belongs_to :message
--belongs_to :group
--belongs_to :user
