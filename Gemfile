@@ -15,13 +15,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'haml-rails'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
 end
-
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'devise'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -30,9 +30,5 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'haml-rails'
-gem 'erb2haml'
+  gem 'erb2haml'
 end
-
-
-
