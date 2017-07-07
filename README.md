@@ -1,26 +1,34 @@
 # README
 
 
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
+
 
 
 Things you may want to cover:
 
 
+
 * Ruby version
 
 
+
 * System dependencies
+
 
 
 * Configuration
 
 
 
+
 * Database creation
 
+
 ## usersテーブル
+
 
 |Column|Type|Options|
 |------|----|-------|
@@ -38,12 +46,15 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 
 
+
 ### Association
 - belongs_to :group
 - belongs_to :member
 
 
+
 ## groupsテーブル
+
 
 
 |Column|Type|Options|
@@ -53,18 +64,23 @@ Things you may want to cover:
 
 
 
+
 ## Association
 -belongs_to :menbers
 -has_many :messages
 
 
+
 ## membersテーブル
+
 
 
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+
 
 
 ### Association
@@ -76,10 +92,12 @@ Things you may want to cover:
 ## messagesテーブル
 
 
+
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, unique: true|
 |body|text||
+
 
 
 ## Association
@@ -88,11 +106,13 @@ Things you may want to cover:
 -has_many :image
 
 
+
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |id|integer|null: false, unique: true|
 |image_url|text||
+
 
 
 ## Association
@@ -104,15 +124,20 @@ Things you may want to cover:
 
 
 
+
 * Database initialization
+
 
 
 * How to run the test suite
 
 
+
 * Services (job queues, cache servers, search engines, etc.)
 
 
+
 * Deployment instructions
+
 
 * ...
