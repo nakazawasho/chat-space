@@ -11,6 +11,7 @@ Things you may want to cover:
 
 * Configuration
 
+
 * Database creation
 ## usersテーブル
 
@@ -80,7 +81,6 @@ Things you may want to cover:
 -belongs_to :message
 -belongs_to :group
 -belongs_to :user
-
 
 
 
