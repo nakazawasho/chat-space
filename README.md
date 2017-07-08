@@ -8,9 +8,10 @@
 |name|string|null: false, add_index, unique:true|
 |email|text|null: false, unique: true|
 
+
 ### Association
-- belongs_to :group
-- belongs_to :member
+- has_many :messages
+- has_many :messages, thought: :members
 
 ## groupsテーブル
 
@@ -19,8 +20,9 @@
 |name|string|null:false|
 
 ## Association
--belongs_to :menbers
 -has_many :messages
+-has_many :members, thought: :members
+
 
 ## membersテーブル
 
@@ -32,7 +34,7 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
--membersテーブルは中間テーブル
+- membersテーブルは中間テーブル
 
 ## messagesテーブル
 
@@ -40,8 +42,9 @@
 |------|----|-------|
 |body|text||
 |image|text||
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ## Association
 -belongs_to :user
 -belongs_to :group
--has_many :image
