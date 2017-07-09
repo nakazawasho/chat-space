@@ -11,6 +11,7 @@
 
 ### Association
 - has_many :messages
+- has_many :members
 - has_many :groups, though: :members
 
 ## groupsテーブル
@@ -21,7 +22,7 @@
 
 ## Association
 - has_many :messages
-- has_many :members, thought: :members
+- has_many :members, though: :members
 
 
 ## membersテーブル
