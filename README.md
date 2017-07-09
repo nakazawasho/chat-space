@@ -22,7 +22,7 @@
 
 ## Association
 - has_many :messages
-- has_many :members, though: :members
+- has_many :users, though: :members
 
 
 ## membersテーブル
