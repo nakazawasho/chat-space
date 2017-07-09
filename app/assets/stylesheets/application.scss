@@ -1,2 +1,8 @@
-@import "./reset";
+@import "reset";
+@import "./config/variable";
+@import "./mixin/_clearfix";
 @import "font-awesome";
+@import "header";
+@import "contents__right";
+@import "contents__left";
+
