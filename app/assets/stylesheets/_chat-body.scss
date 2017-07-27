@@ -1,19 +1,20 @@
 .chat-body {
   float: right;
-  background-color: #AAAAAA;
+  background-color: $chat-body-main-color;
   width: calc(100vw - 300px);
   @include clearfix;
 
   &__footer {
-    background-color: gray;
+    background-color: $footer-main-color;
     height: 90px;
     width: 100%;
     position: fixed;
     bottom: 0;
 
     &__container {
-      padding-right: 40px;
-      padding-left: 40px;
+      height: 50px;
+      width: calc(100vw - 300px - 40px - 40px);
+      margin: 20px 40px 20px 40px;
 
       &__text-box {
         height: 50px;
@@ -26,7 +27,7 @@
         height: 50px;
         width: 100px;
         float: right;
-        background-color: #38AEF0;
+        background-color: $send-button-color;
         @include clearfix;
       }
     }
