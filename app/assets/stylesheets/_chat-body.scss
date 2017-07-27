@@ -1,0 +1,34 @@
+.chat-body {
+  float: right;
+  background-color: #AAAAAA;
+  width: calc(100vw - 300px);
+  @include clearfix;
+
+  &__footer {
+    background-color: gray;
+    height: 90px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    &__container {
+      padding-right: 40px;
+      padding-left: 40px;
+
+      &__text-box {
+        height: 50px;
+        width: calc(100% - 100px);
+        float: left;
+        @include clearfix;
+      }
+
+      &__send-button {
+        height: 50px;
+        width: 100px;
+        float: right;
+        background-color: #38AEF0;
+        @include clearfix;
+      }
+    }
+  }
+}
