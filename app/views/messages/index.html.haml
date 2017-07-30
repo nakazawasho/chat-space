@@ -1,6 +1,11 @@
 .notification
 .wrapper
   .chat-side
+    .chat-side__user
+      .chat-side__user__name
+      .chat-side__user__edit
+    = render :partial => "group"
+    .chat-side__group
   .chat-main
     .chat-main__header
       .chat-main__header__left
@@ -10,6 +15,11 @@
           %P Member: nakazawa
       .chat-main__header__right
         %a
-          SEND
+          Edit
     .chat-main__body
     .chat-main__footer
+      .chat-main__footer__form
+        %textarea
+        .image
+        %a
+          Send

@@ -1,0 +1,17 @@
+.group {
+  padding: 0 20px;
+  margin-bottom: 40px;
+  color: $chat-side-font-color;
+
+  &__name {
+    p {
+      font-size: 15px;
+    }
+  }
+
+  &__new-messages {
+        p {
+      font-size: 11px;
+    }
+  }
+}

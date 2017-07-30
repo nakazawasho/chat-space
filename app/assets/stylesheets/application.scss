@@ -1,8 +1,8 @@
-@import "reset";
 @import "./config/variable";
-@import "./mixin/_clearfix";
-@import "font-awesome";
-@import "notification";
-@import "chat-side";
-@import "chat";
+@import "./mixin/clearfix";
+@import "./font-awesome";
+@import "template/*"
+
+
+
 
