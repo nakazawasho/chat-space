@@ -1,0 +1,92 @@
+.chat-main {
+  float: right;
+  width: calc(100vw - 300px);
+
+  &__header {
+    height: 100px;
+    width: 100%;
+    padding: 0 40px;
+
+    padding-left: 40px;
+    border-bottom: solid $chat-main__header-border-color;
+    background-color: white;
+
+    &__left {
+      float: left;
+      padding-top: 35px;
+
+      &__group-name {
+        p {
+          color: #333333;
+          font-size: 20px;
+        }
+      }
+
+      &__group-member {
+        margin: 15px 0;
+        p {
+          color: #999999;
+          font-size: 12px;
+        }
+      }
+    }
+
+    &__right {
+      float: right;
+      margin-top: 28px;
+    }
+
+
+
+    &__edit-button{
+      border: $button-color 1px solid;
+      float: right;
+      height: 40px;
+      padding: 0 20px;
+      margin: 15px 40px 0 0;
+
+      p {
+        color: $button-color;
+        line-height: 40px;
+      }
+    }
+
+  }
+
+  &__body {
+    height: calc(100vh - 70px - 90px);
+  }
+
+  &__footer {
+    background-color: $footer-main-color;
+    height: 90px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+
+    &__container {
+      height: 50px;
+      width: calc(100vw - 300px - 40px - 40px);
+      margin: 20px 40px 20px 40px;
+      @include clearfix;
+
+      &__text-box {
+        height: 50px;
+        width: calc(100% - 100px);
+        float: left;
+        border-width: 0;
+      }
+
+      &__send-button {
+        height: 50px;
+        width: 100px;
+        float: right;
+        background-color: $button-color;
+
+        p {
+          line-height: 50px;
+        }
+      }
+    }
+  }
+}
