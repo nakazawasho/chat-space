@@ -1,5 +1,3 @@
-$contents__left: 300px;
-
 //カラーコード
 
 //chat-bodyメインカラー
@@ -16,9 +14,16 @@ $chat-side__user-main-color: #090c10;
 $chat-side__user-main-font-color: #fff;
 //chat-side__userバックグラウンドカラー
 $chat-side__user-color: #253141;
+//chat-side__userのグループ名
+$chat-side__user-group-name: #333333;
+//chat-side__userのメンバー名
+$chat-side__user-group-member: #999999;
+
 //ボーダーカラー
 $chat-main__header-border-color: #eeeeee;
 //サイドバーのフォントカラー
 $chat-side-font-color: #ffffff;
+
 //フッターのボタンの色
-$chat-footer-button-color: #ffffff;
+$chat-footer-button-color: #fff;
+$chat-footer-button-background-color: #38AEF0;
