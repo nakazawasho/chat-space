@@ -2,10 +2,14 @@
 .wrapper
   .chat-side
     .chat-side__user
-      .chat-side__user__name
-      .chat-side__user__edit
+      .chat-side_user
+        %ul
+          %li{class: "chat-side__user__name"}
+            nakazawa
+          %li{class: "chat-side__user__edit"}
+            %i.fa.fa-pencil-square-o
+            %i.fa.fa-cog
     = render :partial => "group"
-    .chat-side__group
   .chat-main
     .chat-main__header
       .chat-main__header__left
@@ -14,12 +18,11 @@
         .chat-main__header__left__group-member
           %P Member: nakazawa
       .chat-main__header__right
-        %a
-          Edit
+        %a{href: "#"} Edit
     .chat-main__body
     .chat-main__footer
-      .chat-main__footer__form
-        %textarea
-        .image
-        %a
-          Send
+      %form{class: "chat-main__footer__form"}
+        %input{class: "textarea" , placeholder: "type a message", type: "text"}
+        .chat-main__footer__form__image-font
+          %i.fa.fa-picture-o
+        %input{class: "send-button", value: "Send", type: "submit"}

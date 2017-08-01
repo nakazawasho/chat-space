@@ -5,9 +5,35 @@
   float: left;
   @include clearfix();
 
-  .chat-side__user {
-    height: 70px;
-    width: 100%;
-    background-color: $chat-side__user-main-color;
+  &__user {
+    height:   100px;
+    padding: 0 20px;
+    background-color: $chat-side__user-color;
+     color: $chat-side__user-main-font-color;
+
+     ul {
+      // display: inline-block;
+
+      li {
+        display: inline-block;
+      }
+     }
+
+    &__name {
+      font-weight: bold;
+      line-height: 100px;
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    &__edit {
+      float: right;
+      line-height:100px;
+      .i {
+        display: inline-block;;
+      }
+    }
   }
 }
