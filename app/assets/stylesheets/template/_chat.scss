@@ -62,22 +62,25 @@
       height: 50px;
       width: calc(100% - 90px);
       margin: 20px 0;
+      position: relative;
 
       .textarea {
-        float: left;
         height: 50px;
         width: calc(100% - 150px);
         border: none;
+        position :relative;
+        display: block;
       }
 
-      &__image-font {
-        float: left;
-        height: 50px;
-        width: 20px;
-        background-color: white;
-        margin-right: 10px;
-        line-height: 50px;
+      .icon {
+        display: block;
+        position: absolute;
+        margin: auto;
+        bottom: 0;
+        top: 0;
       }
+
+
 
       .send-button {
         background-color: #38AEF0;
@@ -88,6 +91,9 @@
         height: 50px;
         margin-left: 15px;
         padding: 0 30px;
+        position: absolute;
+        top: 0;
+        right: 0;
       }
     }
   }

@@ -14,7 +14,6 @@
       = render :partial => "message"
     .chat-main__footer
       %form{class: "chat-main__footer__form"}
-        %input{class: "textarea" , placeholder: "type a message", type: "text"}
-        .chat-main__footer__form__image-font
-          %i.fa.fa-picture-o
+        %input{class: "textarea" , placeholder: " type a message", type: "text"}
+          %i.fa.fa-picture-o{class: "icon"}
         %input{class: "send-button", value: "Send", type: "submit"}
