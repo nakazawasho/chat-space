@@ -1,15 +1,6 @@
 .notification
 .wrapper
-  .chat-side
-    .chat-side__user
-      .chat-side_user
-        %ul
-          %li{class: "chat-side__user__name"}
-            nakazawa
-          %li{class: "chat-side__user__edit"}
-            %i.fa.fa-pencil-square-o
-            %i.fa.fa-cog
-    = render :partial => "group"
+  = render partial: "chat-side"
   .chat-main
     .chat-main__header
       .chat-main__header__left
@@ -20,6 +11,7 @@
       .chat-main__header__right
         %a{href: "#"} Edit
     .chat-main__body
+      = render :partial => "message"
     .chat-main__footer
       %form{class: "chat-main__footer__form"}
         %input{class: "textarea" , placeholder: "type a message", type: "text"}
