@@ -9,15 +9,11 @@
     height:   100px;
     padding: 0 20px;
     background-color: $chat-side__user-color;
-     color: $chat-side__user-main-font-color;
+     color: $white;
 
-     ul {
-      // display: inline-block;
-
-      li {
-        display: inline-block;
-      }
-     }
+    li {
+      display: inline-block;
+    }
 
     &__name {
       font-weight: bold;
@@ -41,7 +37,7 @@
   margin:  20px 0 40px;
   padding: 0 20px;
   margin-bottom: 40px;
-  color: $chat-side-font-color;
+  color: $white;
 
   &__name {
     p {

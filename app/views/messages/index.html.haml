@@ -1,6 +1,6 @@
 .notification
 .wrapper
-  = render partial: "chat-side"
+  = render "chat-side"
   .chat-main
     .chat-main__header
       .chat-main__header__left
@@ -11,7 +11,7 @@
       .chat-main__header__right
         %a{href: "#"} Edit
     .chat-main__body
-      = render :partial => "message"
+      = render "message"
     .chat-main__footer
       %form{class: "chat-main__footer__form"}
         %input{class: "textarea" , placeholder: " type a message", type: "text"}
