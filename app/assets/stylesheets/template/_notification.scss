@@ -1,0 +1,10 @@
+.notification {
+  background-color: $blue;
+  position: fixed;
+  width: 100%;
+
+  p {
+    text-align: center;
+    color: $white;
+  }
+}

@@ -1,0 +1,19 @@
+.notification
+.wrapper
+  = render "chat-side"
+  .chat-main
+    .chat-main__header
+      .chat-main__header__left
+        .chat-main__header__left__group-name
+          %p nakazawa
+        .chat-main__header__left__group-member
+          %P Member: nakazawa
+      .chat-main__header__right
+        %a{href: "#"} Edit
+    .chat-main__body
+      = render "message"
+    .chat-main__footer
+      %form{class: "chat-main__footer__form"}
+        %input{class: "textarea" , placeholder: " type a message", type: "text"}
+          %i.fa.fa-picture-o{class: "icon"}
+        %input{class: "send-button", value: "Send", type: "submit"}

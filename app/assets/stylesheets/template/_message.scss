@@ -1,0 +1,22 @@
+.message__name-date {
+  width: 100%;
+}
+
+li {
+  display: inline-block;
+}
+
+.list-name {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.list-date {
+  color: $chat-side__user-group-member;
+  font-size: 12px;
+}
+
+.message__text {
+  margin: 10px 0 40px;
+  font-size: 14px;
+}
