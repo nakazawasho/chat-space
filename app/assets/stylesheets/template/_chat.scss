@@ -46,7 +46,10 @@
 
 
   &__body {
-    height: calc(100vh - 70px - 90px);
+    height: calc(100vh - 160px);
+    width: calc(100vw - 300px)
+    padding: 46px 40px 0;
+    overflow: scroll;
   }
 
   &__footer {
@@ -77,7 +80,8 @@
         position: absolute;
         margin: auto;
         bottom: 0;
-        top: 0;
+        top: 15px;
+        left: 860px;
       }
 
 
