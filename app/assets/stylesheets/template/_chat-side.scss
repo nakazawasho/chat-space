@@ -27,8 +27,10 @@
     &__edit {
       float: right;
       line-height:100px;
-      .i {
-        display: inline-block;;
+
+      i {
+        display: inline-block;
+        color: $white;
       }
     }
   }
