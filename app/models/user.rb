@@ -7,4 +7,6 @@ class User < ApplicationRecord
   #validation
   validates :name, :email, presence: true
   validates_uniqueness_of :name, :email
+
+  #association
 end
