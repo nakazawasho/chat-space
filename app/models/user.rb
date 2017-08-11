@@ -9,4 +9,5 @@ class User < ApplicationRecord
   validates_uniqueness_of :name, :email
 
   #association
+  has_many :members
 end
