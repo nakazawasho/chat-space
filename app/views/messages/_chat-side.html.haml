@@ -2,12 +2,10 @@
   .chat-side__user
     .chat-side__user
       %ul
-        %li.chat-side__user__name
-          #{current_user.name}
+        %li.chat-side__user__name #{current_user.name}
         %li.chat-side__user__edit
           = link_to new_group_path do
             %i.fa.fa-pencil-square-o
           = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
-  - @groups.each do |group|
-    = render partial: "group", locals: {group: group}
+  = render @groups

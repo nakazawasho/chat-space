@@ -3,25 +3,16 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def edit
-  end
-
   def create
-    created_group = Group.create(name: create_group_params[:name])
-
-    create_user_id_params[:user_ids].each do |user_id|
-      Member.create(group_id: created_group.id, user_id: user_id)
-    end
-
-    redirect_to controller: :messages, action: :index
+    # binding.pry
+    Group.create(group_params)
+    # binding.pry
+    redirect_to root_path
   end
 
   private
-  def create_group_params
-    params.require(:chat_group).permit(:name)
+  def group_params
+    params.require(:group).permit(:name, {"user_ids" => []})
   end
 
-  def create_user_id_params
-    params.require(:group)
-  end
 end
