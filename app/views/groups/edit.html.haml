@@ -1,6 +1,6 @@
 .chat-group-form
   %h1 チャットグループ編集
-  = form_for @group do |f|
+  = form_for @grops do |f|
     .chat-group-form__errors
       %h2
         1件のエラーが発生しました。
@@ -29,7 +29,6 @@
       .chat-group-form__field--right
         .check_box
           = f.collection_check_boxes(:user_ids, User.all, :id, :name) do |b|
-            = b.label { b.check_box + b.text }
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
