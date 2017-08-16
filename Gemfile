@@ -19,6 +19,7 @@ gem 'haml-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'rails-i18n'
 
 group :development, :test do
   gem 'byebug', platform: :mri

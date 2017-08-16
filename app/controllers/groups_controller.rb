@@ -4,10 +4,13 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.create(group_params)
     # binding.pry
-    Group.create(group_params)
-    # binding.pry
-    redirect_to root_path
+    if @group
+      redirect_to root_path
+    else
+      redirect_to new_group_path
+    end
   end
 
   private
