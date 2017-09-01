@@ -35,22 +35,27 @@
     }
   }
 
-  &__group {
-  margin:  20px 0 40px;
-  padding: 0 20px;
-  margin-bottom: 40px;
-  color: $white;
+  .chat-side__groups {
+    overflow: scroll;
+    height: calc(100vh - 100px);
 
-  &__name {
-    p {
-      font-size: 15px;
+    &__group {
+    margin:  20px 0 40px;
+    padding: 0 20px;
+    margin-bottom: 40px;
+    color: $white;
+
+    &__name {
+      p {
+        font-size: 15px;
+      }
     }
-  }
 
-    &__new-messages {
-      margin-top: 5px;
-          p {
-        font-size: 11px;
+      &__new-messages {
+        margin-top: 5px;
+            p {
+          font-size: 11px;
+        }
       }
     }
   }
