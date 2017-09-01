@@ -39,7 +39,7 @@
     overflow: scroll;
     height: calc(100vh - 100px);
 
-    .chat-side__group {
+    &__group {
     margin:  20px 0 40px;
     padding: 0 20px;
     margin-bottom: 40px;
