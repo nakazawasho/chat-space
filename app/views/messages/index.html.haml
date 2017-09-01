@@ -9,7 +9,7 @@
         .chat-main__header__left__group-member
           %P Member: nakazawa
       .chat-main__header__right
-        %a{href: "#"} Edit
+        =link_to "Edit", "/groups/#{1}/edit"
     .chat-main__body
       = render "message"
     .chat-main__footer
