@@ -6,6 +6,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    binding.pry
     if @group.save
       redirect_to root_path, notice: "グループの作成が完了しました。"
     else
@@ -16,7 +17,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name, {"user_ids": []})
+    params.require(:group).permit(:name, user_ids: [])
   end
 
 end
