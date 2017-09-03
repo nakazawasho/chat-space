@@ -49,6 +49,11 @@
       p {
         font-size: 15px;
       }
+
+      a {
+        color: $white;
+        text-decoration: none;
+      }
     }
 
       &__new-messages {

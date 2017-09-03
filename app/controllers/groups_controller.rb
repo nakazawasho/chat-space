@@ -1,7 +1,31 @@
 class GroupsController < ApplicationController
 
+  def index
+    @groups = current_user.groups
+  end
+
+  def show
+    @groups = current_user.groups
+    @group = Group.find(params[:id])
+    @users = @group.users
+  end
+
   def new
     @group = Group.new
+  end
+
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to root_path, notice: "グループ編集をしました。"
+    else
+      flash.now[:alert] = "グループ編集に失敗しました。"
+      render :edit
+    end
   end
 
   def create
