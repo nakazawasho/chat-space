@@ -8,7 +8,6 @@ class GroupsController < ApplicationController
     @groups = current_user.groups
     @group = Group.find(params[:id])
     @users = @group.users
-    # binding.pry
   end
 
   def new
