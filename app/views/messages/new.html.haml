@@ -1,6 +1,6 @@
 .notification
 .wrapper
-  = render "chat-side"
+  = render 'groups/chat-side'
   .chat-main
     .chat-main__header
       .chat-main__header__left
@@ -13,7 +13,8 @@
     .chat-main__body
       = render "message"
     .chat-main__footer
-      %form{class: "chat-main__footer__form"}
-        %input{class: "textarea" , placeholder: " type a message", type: "text"}
+      .chat-main__footer__form
+        = form_for [@group, @message] do |f|
+          = f.text_field(:content, class: "textarea" , placeholder: " type a message", type: "text")
           %i.fa.fa-picture-o{class: "icon"}
-        %input{class: "send-button", value: "Send", type: "submit"}
+          = f.submit(class: "send-button", type: "submit", value: "Send")
