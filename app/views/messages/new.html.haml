@@ -11,7 +11,7 @@
       .chat-main__header__right
         =link_to "Edit", "/groups/71/edit"
     .chat-main__body
-      = render "message"
+      = render @messages
     .chat-main__footer
       .chat-main__footer__form
         = form_for [@group, @message] do |f|
