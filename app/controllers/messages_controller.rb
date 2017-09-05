@@ -2,8 +2,9 @@ class MessagesController < ApplicationController
   def new
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
-    @messages = Message.all
+    @messages = @group.messages
     @message = Message.new
+    @users = Group.find(params[:group_id]).users
   end
 
   def create

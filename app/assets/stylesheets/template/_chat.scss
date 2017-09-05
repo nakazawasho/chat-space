@@ -70,19 +70,30 @@
 
       .textarea {
         height: 50px;
-        width: calc(100% - 150px);
+        width: calc(100% - 210px);
         border: none;
         position :relative;
         display: block;
+      }
+
+      &__image {
+        height: 50px;
+        width: 25px;
+        background-color: $white;
+        position: absolute;
+        right: 185px;
+        top: 0;
+      }
+
+      #message_image {
+        display: none;
       }
 
       .icon {
         display: block;
         position: absolute;
         margin: auto;
-        bottom: 0;
-        top: 15px;
-        left: 860px;
+        line-height: 50px;
       }
 
       .send-button {
