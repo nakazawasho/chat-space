@@ -27,6 +27,7 @@ gem 'rmagick', require: 'RMagick'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 group :development do
