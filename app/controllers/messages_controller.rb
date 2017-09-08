@@ -12,7 +12,11 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to new_group_message_path
     else
-      redirect_to new_group_message_path, alert: "メッセージ送信失敗"
+      @groups = current_user.groups
+      @group = Group.find(params[:group_id])
+      @messages = @group.messages
+      @users = Group.find(params[:group_id]).users
+      render :new, alert: "メッセージ送信失敗"
     end
 
   end
