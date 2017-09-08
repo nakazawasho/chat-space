@@ -12,10 +12,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to new_group_message_path
     else
-      @groups = current_user.groups
-      @group = Group.find(params[:group_id])
-      @messages = @group.messages
-      @users = Group.find(params[:group_id]).users
+      set_instance
       render :new, alert: "メッセージ送信失敗"
     end
 
@@ -24,5 +21,12 @@ class MessagesController < ApplicationController
   private
   def message_params
     params.require(:message).permit(:content, :image).merge(group_id: params[:group_id])
+  end
+
+  def set_instance
+      @groups = current_user.groups
+      @group = Group.find(params[:group_id])
+      @messages = @group.messages
+      @users = Group.find(params[:group_id]).users
   end
 end
