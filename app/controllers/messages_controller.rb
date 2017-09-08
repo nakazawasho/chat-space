@@ -8,12 +8,17 @@ class MessagesController < ApplicationController
   end
 
   def create
-    Message.create(message_params)
-    redirect_to new_group_message_path
+    @message = current_user.messages.new(message_params)
+    if @message.save
+      redirect_to new_group_message_path
+    else
+      redirect_to new_group_message_path, alert: "メッセージ送信失敗"
+    end
+
   end
 
   private
   def message_params
-    params.require(:message).permit(:content, :image).merge(group_id: params[:group_id], user_id: current_user.id)
+    params.require(:message).permit(:content, :image).merge(group_id: params[:group_id])
   end
 end
