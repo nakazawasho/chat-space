@@ -1,0 +1,11 @@
+.message__name-date
+  %ul
+    %li.list-name
+      =message.user.name
+    %li.list-date
+      =message.created_time
+.message__text
+  %p
+    =message.content
+  -if message.image_url(:thumb)
+    = image_tag message.image_url(:thumb)

@@ -20,10 +20,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
+
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem 'bullet'
 end
 
 group :development do
@@ -31,7 +35,5 @@ group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'erb2haml'
 end
