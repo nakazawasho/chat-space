@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.4'
 gem 'mysql2', '0.3.18'
 gem 'puma', '~> 3.0'
@@ -22,7 +21,6 @@ gem 'font-awesome-rails'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
-
 
 group :development, :test do
   gem 'byebug', platform: :mri
