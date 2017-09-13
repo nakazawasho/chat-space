@@ -1,9 +1,7 @@
 FactoryGirl.define do
 
   factory :group do
-    text     "hello"
-    image    "sample.png"
-    user_id  1
+    name      "nakazawa"
   end
 
 end
