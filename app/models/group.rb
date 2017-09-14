@@ -5,5 +5,5 @@ class Group < ApplicationRecord
   has_many :messages
 
   #validation
-  validates :name, :user_ids, presence: true
+  validates :name, presence: true
 end
