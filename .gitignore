@@ -22,3 +22,6 @@
 
 #venderは含めません！
 /vendor/
+
+#publicは含めません！
+/public
