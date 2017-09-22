@@ -20,7 +20,7 @@ gem 'devise'
 gem 'font-awesome-rails'
 gem 'rails-i18n'
 gem 'carrierwave'
-gem 'rmagick', require: 'RMagick'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platform: :mri

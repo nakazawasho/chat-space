@@ -7,7 +7,6 @@ class Message < ApplicationRecord
   validates_presence_of :content, :unless => :image?
   validates_presence_of :image, :unless => :content?
 
-
   mount_uploader :image, ImageUploader
 
   def created_time
