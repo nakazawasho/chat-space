@@ -15,7 +15,6 @@ class MessagesController < ApplicationController
       set_instance
       render :new, alert: "メッセージ送信失敗"
     end
-
   end
 
   private
