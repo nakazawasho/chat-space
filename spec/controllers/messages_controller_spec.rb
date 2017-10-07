@@ -7,37 +7,58 @@ describe MessagesController do
   describe 'GET #new' do
     #ログインしている場合
     context 'you are logged in' do
+      #ログインしている状態を作る
+      let(:user){ create(:user) }
+      before :each do
+        login_user user
+        group = user.groups.first.id
+        get :new, group_id: group
+      end
+
       #該当するビューが描画されているか
       it 'renders the :new template' do
-        get :new
         expect(response).to render_template :new
       end
 
-      #@groupsに正しく値がはいっているか
+      #groupsに正しく値がはいっているか
       it 'assigns the requested groups to @groups' do
+        groups = user.groups
+        expect(assigns(:groups)).to eq groups
       end
 
       #@groupに正しく値がはいっているか
       it 'assigns the requested group to @group' do
+        group = user.groups.first
+        expect(assigns(:group)).to eq group
       end
 
       #@messagesに正しく値がはいっているか
       it 'assigns the requested messages to @messages' do
+        messages = user.groups.first.messages
+        expect(assigns(:messages)).to eq messages
       end
 
       #@messageに正しく値がはいっているか
       it 'assigns the requested message to @message' do
+        expect(assigns(:message)).to be_a_new(Message)
       end
 
-      #usersに正しく値がはいっているか
+      #@usersに正しく値がはいっているか
       it 'assigns the requested users to @users' do
+        users = user.groups.first.users
+        expect(assigns(:users)).to eq users
       end
     end
 
     #ログインしていない場合
     context 'you are not logged in' do
       #意図したビューにリダイレクトできているか
-      it '' do
+      it "blocks unauthenticated access" do
+        user = create(:user)
+        sign_out :user
+        group = user.groups.first.id
+        get :new, group_id: group
+        expect(response).to redirect_to(new_user_session_path)
       end
     end
   end
