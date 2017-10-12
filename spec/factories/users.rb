@@ -10,6 +10,7 @@ FactoryGirl.define do
     after(:create) do |user|
       group = create(:group)
       create(:member, user: user, group: group)
+      create(:message, user: user, group: group)
     end
   end
 

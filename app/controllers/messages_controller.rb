@@ -13,7 +13,8 @@ class MessagesController < ApplicationController
       redirect_to new_group_message_path
     else
       set_instance
-      render :new, alert: "メッセージ送信失敗"
+      render :new
+      flash.now[:alert] = "メッサージ送信失敗"
     end
   end
 
