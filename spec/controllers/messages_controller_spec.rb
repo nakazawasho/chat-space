@@ -64,11 +64,12 @@ describe MessagesController do
   describe 'POST #create' do
     let(:user){ create(:user) }
     let(:group){ user.groups.first }
-    subject {
-      Proc.new { post :create, message: attributes_for(:message), group_id: group }
-    }
+
     #ログインしているかつ、保存に成功した場合
     context 'you are logged in' do
+      subject {
+        Proc.new { post :create, message: attributes_for(:message), group_id: group }
+      }
       before :each do
         login_user user
       end
@@ -87,20 +88,23 @@ describe MessagesController do
 
       #ログインしているが、保存に失敗した場合
       context 'unsucceed in preserving a new data' do
+        subject {
+          Proc.new { post :create, message: attributes_for(:message, content: nil, image: nil), group_id: group }
+        }
         #メッセージの保存は行われなかったか
         it 'dose not save the new message in the database' do
-          expect{ post :create, message: attributes_for(:message, content: nil, image: nil), group_id: group
+          expect{ subject.call
           }.not_to change(Message, :count)
         end
 
         #意図したビューが描画されているか
         it 're-renders the index template' do
-          post :create, message: attributes_for(:message, content: nil, image: nil), group_id: group
+          subject.call
           expect(response).to render_template :new
         end
 
         it 'shows a flash message' do
-          post :create, message: attributes_for(:message, content: nil, image: nil), group_id: group
+          subject.call
           expect(flash[:alert]).to be_present
         end
       end
