@@ -2,13 +2,13 @@ require 'rails_helper'
 
 #メッセージコントローラーのテスト
 describe MessagesController do
+  let(:user){ create(:user) }
+  let(:group){ user.groups.first }
+  let(:wrong_group){ create(:group) }
 
   #メッセージ一覧ページを表示するアクション
   describe 'GET #new' do
     #ログインしている場合
-    let(:user){ create(:user) }
-    let(:group){ user.groups.first }
-
     context 'you are logged in' do
       #ログインしている状態を作る
       before :each do
@@ -50,6 +50,15 @@ describe MessagesController do
       end
     end
 
+      context 'you access a wrong group' do
+        #フラッシュメッセージのテスト
+        it 'show a flach message' do
+          login_user user
+          get :new, group_id: wrong_group
+          expect(flash[:alert]).to eq '所属していないグループにアクセスしようとしています'
+        end
+      end
+
     #ログインしていない場合
     context 'you are not logged in' do
       #意図したビューにリダイレクトできているか
@@ -62,9 +71,6 @@ describe MessagesController do
 
   #メッセージを作成するアクション
   describe 'POST #create' do
-    let(:user){ create(:user) }
-    let(:group){ user.groups.first }
-
     #ログインしているかつ、保存に成功した場合
     context 'you are logged in' do
       subject {
@@ -103,9 +109,18 @@ describe MessagesController do
           expect(response).to render_template :new
         end
 
+        #フラッシュメッセージのテスト
         it 'shows a flash message' do
           subject.call
-          expect(flash[:alert]).to be_present
+          expect(flash[:alert]).to eq 'メッセージ送信失敗'
+        end
+      end
+
+      context 'you access a wrong group' do
+        #フラッシュメッセージのテスト
+        it 'show a flach message' do
+          post :create, message: attributes_for(:message), group_id: wrong_group
+          expect(flash[:alert]).to eq '所属していないグループにアクセスしようとしています'
         end
       end
     end

@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :check_message, only: [:new, :create]
+
   def new
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
@@ -14,7 +16,7 @@ class MessagesController < ApplicationController
     else
       set_instance
       render :new
-      flash.now[:alert] = "メッサージ送信失敗"
+      flash.now[:alert] = "メッセージ送信失敗"
     end
   end
 
