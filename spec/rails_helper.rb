@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'devise'
+require File.expand_path("spec/support/controller_macros.rb")
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -19,4 +21,6 @@ RSpec.configure do |config|
     include ActionDispatch::TestProcess
   end
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include Devise::TestHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
 end

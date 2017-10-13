@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :check_message, only: [:new, :create]
+
   def new
     @groups = current_user.groups
     @group = Group.find(params[:group_id])
@@ -13,9 +15,9 @@ class MessagesController < ApplicationController
       redirect_to new_group_message_path
     else
       set_instance
-      render :new, alert: "メッセージ送信失敗"
+      render :new
+      flash.now[:alert] = "メッセージ送信失敗"
     end
-
   end
 
   private
