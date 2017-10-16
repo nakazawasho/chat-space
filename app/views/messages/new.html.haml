@@ -14,8 +14,8 @@
       = render @messages
     .chat-main__footer
       .chat-main__footer__form
-        = form_for [@group, @message] do |f|
-          = f.text_field(:content, class: "textarea" , placeholder: " type a message", type: "text")
+        = form_for [@group, @message], remote: true do |f|
+          = f.text_field(:content, class: "textarea", placeholder: " type a message", type: "text")
           .chat-main__footer__form__image
             .chat-main__footer__form__image__mask
               = f.label :image, class: "fa fa-picture-o icon" do
