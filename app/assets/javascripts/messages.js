@@ -74,9 +74,10 @@ $(function(){
       var html = buildHTML(data);
       $('.message').append(html)
       $('.textarea').val('')
+      $('#chat-main__body').animate({scrollTop: $('#chat-main__body')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
       alert('error');
     })
-  })
+  });
 });

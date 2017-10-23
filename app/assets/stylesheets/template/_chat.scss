@@ -51,7 +51,7 @@
     height: calc(100vh - 193px);
     width: calc(100vw - 380px);
     padding: 30px 40px 0;
-    overflow: scroll;
+    overflow: auto;
   }
 
   &__footer {
@@ -111,4 +111,3 @@
     }
   }
 }
-
