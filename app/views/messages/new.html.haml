@@ -10,8 +10,9 @@
           %p Member: #{render @users}
       .chat-main__header__right
         =link_to "Edit", edit_group_path(@group)
-    .chat-main__body#chat-main__body
-      = render @messages
+    .chat-main__body
+      .messages
+        = render @messages
     .chat-main__footer
       .chat-main__footer__form
         = form_for [@group, @message], remote: true do |f|

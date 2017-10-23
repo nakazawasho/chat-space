@@ -72,12 +72,15 @@ $(function(){
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.message').append(html)
+      $('.messages').append(html)
       $('.textarea').val('')
-      $('#chat-main__body').animate({scrollTop: $('#chat-main__body')[0].scrollHeight}, 'fast');
+      $('#message_image').val('')
+      $('.chat-main__body').animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      $('.send-button').prop("disabled", false)
     })
     .fail(function(){
       alert('error');
+      $('.send-button').prop("disabled", false)
     })
   });
 });

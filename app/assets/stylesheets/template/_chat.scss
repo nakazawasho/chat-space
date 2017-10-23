@@ -48,10 +48,10 @@
 
 
   &__body {
-    height: calc(100vh - 193px);
     width: calc(100vw - 380px);
+    height: calc(100vh - 193px);
+    overflow: scroll;
     padding: 30px 40px 0;
-    overflow: auto;
   }
 
   &__footer {
