@@ -1,4 +1,4 @@
-$(function(){
+$(document).on(‘turbolinks:load’, function() {
   function buildHTML(message){
     if (message.content != null && message.image_url != null){
       var html = `<div class="message">
@@ -75,7 +75,7 @@ $(function(){
       $('.messages').append(html)
       $('.textarea').val('')
       $('#message_image').val('')
-      $('.chat-main__body').animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      $('.chat-main__body').animate({scrollTop: $(".messages")[0].scrollHeight}, 'slow');
       $('.send-button').prop("disabled", false)
     })
     .fail(function(){
