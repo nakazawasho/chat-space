@@ -34,7 +34,7 @@ $(function() {
       return head + image + foot;
     }
   };
-  $('#new_message').on('submit', function(e){
+  $("#new_message").on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -47,15 +47,18 @@ $(function() {
       contentType: false
     })
     .done(function(data){
+      var success = `<div class="flash flash__notice">メッセージの送信に成功しました</div>`
       var html = buildHTML(data);
-      $('.messages').append(html);
-      $('.textarea').val('');
-      $('#message_image').val('');
-      $('.chat-main__body').animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
-      $('.send-button').prop("disabled", false);
+      $(".messages").append(html);
+      $(".textarea").val('');
+      $("#message_image").val('');
+      $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      $(".send-button").prop("disabled", false);
+      $(".chat-side").before(success);
     })
     .fail(function(){
-      alert('error');
+      var alert = `<div class="flash flash__alert">メッセージの送信に失敗しました</div>`;
+      $(".chat-side").before(alert);
       $('.send-button').prop("disabled", false);
     });
   });

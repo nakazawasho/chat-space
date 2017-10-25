@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to new_group_message_path  }
         format.json
       end
+      flash.now[:notice] = "メッセージ送信成功"
     else
       set_instance
       render :new
