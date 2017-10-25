@@ -1,61 +1,37 @@
 $(function() {
   function buildHTML(message){
+    var head = `<div class="message">
+                  <div class="message__name-date">
+                    <ul>
+                      <li class="list-name">
+                        ${message.user_name}
+                      </li>
+                      <li class="list-date">
+                        ${message.created_time}
+                      </li>
+                    </ul>
+                  </div>`;
+    var foot = `</div>`;
+    var contentAndMessage = `<div class="message__text">
+                              <p>
+                                ${message.content}
+                              </p>
+                              <img src="${message.image_url}">
+                             </div>`;
+    var content = `<div class="message__text">
+                     <p>
+                       ${message.content}
+                     </p>
+                   </div>`;
+    var image = `<div class="message__text">
+                   <img src="${message.image_url}">
+                 </div>`;
     if (message.content != null && message.image_url != null){
-      var html = `<div class="message">
-                    <div class="message__name-date">
-                      <ul>
-                        <li class="list-name">
-                          ${message.user_name}
-                        </li>
-                        <li class="list-date">
-                          ${message.created_time}
-                        </li>
-                      </ul>
-                    </div>
-                  <div class="message__text">
-                    <p>
-                      ${message.content}
-                    </p>
-                      <img src="${message.image_url}">
-                    </div>
-                  </div>`
-      return html;
+      return head + contentAndMessage + foot;
     } else if(message.content != null && message.image_url == null){
-      var html = `<div class="message">
-                    <div class="message__name-date">
-                      <ul>
-                        <li class="list-name">
-                          ${message.user_name}
-                        </li>
-                        <li class="list-date">
-                          ${message.created_time}
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="message__text">
-                      <p>
-                        ${message.content}
-                      </p>
-                    </div>
-                  </div>`
-      return html;
+      return head + content +foot;
     } else {
-      var html = `<div class="message">
-                    <div class="message__name-date">
-                      <ul>
-                        <li class="list-name">
-                          ${message.user_name}
-                        </li>
-                        <li class="list-date">
-                          ${message.created_time}
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="message__text">
-                      <img src="${message.image_url}">
-                    </div>
-                  </div>`
-      return html;
+      return head + image + foot;
     }
   };
   $('#new_message').on('submit', function(e){
