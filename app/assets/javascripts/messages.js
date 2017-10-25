@@ -1,4 +1,4 @@
-$(document).on(‘turbolinks:load’, function() {
+$(function() {
   function buildHTML(message){
     if (message.content != null && message.image_url != null){
       var html = `<div class="message">
@@ -12,7 +12,7 @@ $(document).on(‘turbolinks:load’, function() {
                         </li>
                       </ul>
                     </div>
-                  <div class="message_text">
+                  <div class="message__text">
                     <p>
                       ${message.content}
                     </p>
@@ -32,7 +32,7 @@ $(document).on(‘turbolinks:load’, function() {
                         </li>
                       </ul>
                     </div>
-                    <div class="message_text">
+                    <div class="message__text">
                       <p>
                         ${message.content}
                       </p>
@@ -51,17 +51,17 @@ $(document).on(‘turbolinks:load’, function() {
                         </li>
                       </ul>
                     </div>
-                    <div class="message_text">
+                    <div class="message__text">
                       <img src="${message.image_url}">
                     </div>
                   </div>`
       return html;
     }
-  }
+  };
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr('action')
+    var url = $(this).attr('action');
     $.ajax({
       url: url,
       type: "POST",
@@ -72,15 +72,15 @@ $(document).on(‘turbolinks:load’, function() {
     })
     .done(function(data){
       var html = buildHTML(data);
-      $('.messages').append(html)
-      $('.textarea').val('')
-      $('#message_image').val('')
-      $('.chat-main__body').animate({scrollTop: $(".messages")[0].scrollHeight}, 'slow');
-      $('.send-button').prop("disabled", false)
+      $('.messages').append(html);
+      $('.textarea').val('');
+      $('#message_image').val('');
+      $('.chat-main__body').animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      $('.send-button').prop("disabled", false);
     })
     .fail(function(){
       alert('error');
-      $('.send-button').prop("disabled", false)
-    })
+      $('.send-button').prop("disabled", false);
+    });
   });
 });
