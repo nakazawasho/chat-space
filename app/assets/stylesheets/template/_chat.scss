@@ -48,17 +48,17 @@
 
 
   &__body {
-    height: calc(100vh - 193px);
     width: calc(100vw - 380px);
-    padding: 30px 40px 0;
+    height: calc(100vh - 193px);
     overflow: scroll;
+    padding: 30px 40px 0;
   }
 
   &__footer {
     background-color: $footer-main-color;
     height: 90px;
     width: calc(100vw - 380px);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     padding: 0 40px;
 
@@ -111,4 +111,3 @@
     }
   }
 }
-
