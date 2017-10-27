@@ -14,13 +14,15 @@ class MessagesController < ApplicationController
     if @message.save
       respond_to do |format|
         format.html { redirect_to new_group_message_path  }
-        format.json
+        format.json { render 'success', handers: 'jbuilder' }
       end
-      flash.now[:notice] = "メッセージ送信成功"
     else
       set_instance
-      render :new
       flash.now[:alert] = "メッセージ送信失敗"
+      respond_to do |format|
+        format.html { render :new  }
+        format.json { render 'unsuccess', handlers: 'jbuilder' }
+      end
     end
   end
 
