@@ -57,8 +57,9 @@ $(function() {
         $(".send-button").prop("disabled", false);
         $(".chat-side").before(success_html);
       } else if ( data.unsuccess != null) {
-        var unsuccess_html = `<div class="flash flash__notice">${data.unsuccess}</div>`;
+        var unsuccess_html = `<div class="flash flash__alert">${data.unsuccess}</div>`;
         $(".chat-side").before(unsuccess_html);
+        $(".send-button").prop("disabled", false);
       }
      })
     .fail(function(){
