@@ -46,8 +46,8 @@ $(function() {
        processData: false,
        contentType: false
      })
-     .done(function(data){
-       if (data.success != null){
+    .done(function(data){
+      if (data.success != null){
         var success_html = `<div class="flash flash__notice">${data.success}</div>`;
         var html = buildHTML(data);
         $(".messages").append(html);
@@ -55,13 +55,19 @@ $(function() {
         $("#message_image").val('');
         $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
         $(".send-button").prop("disabled", false);
-        $(".chat-side").before(success_html);
+        $(".chat-side").before(success_html)
+        $(".flash__notice:not(:animated)").fadeIn("slow",function(){
+          $(this).delay(2000).fadeOut();
+        });
       } else if ( data.unsuccess != null) {
         var unsuccess_html = `<div class="flash flash__alert">${data.unsuccess}</div>`;
         $(".chat-side").before(unsuccess_html);
+        $(".flash__alert:not(:animated)").fadeIn("slow",function(){
+          $(this).delay(2000).fadeOut();
+        });
         $(".send-button").prop("disabled", false);
       }
-     })
+    })
     .fail(function(){
       $('.send-button').prop("disabled", false);
     });
