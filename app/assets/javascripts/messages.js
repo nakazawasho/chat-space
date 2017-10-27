@@ -59,11 +59,7 @@ $(function() {
         $(".flash__notice:not(:animated)").fadeIn("slow",function(){
           $(this).delay(2000).fadeOut();
         });
-<<<<<<< HEAD
       } else ( data.unsuccess != null) {
-=======
-      } else ( data.unsuccess != null) {
->>>>>>> 7a3278ec8a6afdd60f64a784d3c2b8ef68942687
         var unsuccess_html = `<div class="flash flash__alert">${data.unsuccess}</div>`;
         $(".chat-side").before(unsuccess_html);
         $(".flash__alert:not(:animated)").fadeIn("slow",function(){
