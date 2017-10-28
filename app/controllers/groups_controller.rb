@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @users = User.where('title LIKE(?)', "%#{params[:keyword]}%")
   end
 
   def edit
