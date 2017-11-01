@@ -2,8 +2,11 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit, :update]
 
   def index
-    binding.pry
-    @users = User.where('name LIKE(?)', "#{params[:keyword]}")
+    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json { render 'users', handlers: 'jbuilder' }
+    end
   end
 
   def edit
@@ -21,9 +24,5 @@ class UsersController < ApplicationController
   private
   def update_params
     params.require(:user).permit(:name, :email)
-  end
-
-  def user_params
-    params.require(:)
   end
 end

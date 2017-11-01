@@ -21,9 +21,6 @@ class ApplicationController < ActionController::Base
   def check_user
     if User.where(id: params[:id]).empty?
       redirect_to root_path, alert: "そのユーザーは存在しません"
-    elsif User.find(params[:id]).members.where(group_id: params[:id], user_id: current_user.id).empty?
-      redirect_to root_path, alert: "そのユーザーの編集権限はありません"
-    else
     end
   end
 

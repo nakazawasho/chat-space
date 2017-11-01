@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
    function buildHTML(message){
      var head = `<div class="message">
                    <div class="message__name-date">
