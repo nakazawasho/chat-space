@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit, :update]
 
   def index
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%")
+    user_ids = params[:chat_group_users_ids].map(&:to_i)
+    binding.pry
+    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").where.not(id: user_ids)
     respond_to do |format|
       format.html
       format.json { render 'users', handlers: 'jbuilder' }
