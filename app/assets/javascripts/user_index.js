@@ -51,8 +51,7 @@ $(document).on('turbolinks:load', function() {
         users.forEach(function(user){
           appendUser(user);
         });
-      }
-      else {
+      } else {
         appendNoUser("一致するユーザーはいません");
       }
 

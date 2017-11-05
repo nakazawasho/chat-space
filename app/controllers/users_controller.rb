@@ -3,8 +3,7 @@ class UsersController < ApplicationController
 
   def index
     user_ids = params[:chat_group_users_ids].map(&:to_i)
-    binding.pry
-    @users = User.where('name LIKE(?)', "%#{params[:keyword]}%").where.not(id: user_ids)
+    @users = User.search_with_keyword(params[:keyword]).not_search_with_id(user_ids)
     respond_to do |format|
       format.html
       format.json { render 'users', handlers: 'jbuilder' }
