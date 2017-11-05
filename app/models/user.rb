@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :members
   has_many :groups, through: :members
   has_many :messages
+
+  #scope
+  scope :search_with_keyword, -> (keyword){ where('name LIKE(?)', "%#{keyword}%") }
+  scope :not_search_with_id, -> (id){ where.not(id: id) }
 end

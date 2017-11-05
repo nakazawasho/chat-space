@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
@@ -22,9 +21,6 @@ class ApplicationController < ActionController::Base
   def check_user
     if User.where(id: params[:id]).empty?
       redirect_to root_path, alert: "そのユーザーは存在しません"
-    elsif User.find(params[:id]).members.where(group_id: params[:id], user_id: current_user.id).empty?
-      redirect_to root_path, alert: "そのユーザーの編集権限はありません"
-    else
     end
   end
 
