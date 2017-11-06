@@ -35,27 +35,24 @@ $(document).on('turbolinks:load', function() {
      }
    };
 
-  function autoLoad(messages){
-    setInterval(function(messages){
-      var myLastMessage = $(".message").last().data("message-id");
+  function autoLoad(){
+    var myLastMessage = $(".message").last().data("message-id");
 
-      $.ajax({
-        url: $(location).attr('pathname'),
-        type: "GET",
-        dataType: 'json',
-        data: { last: myLastMessage }
-      })
-      .done(function(messages){
-        if (messages.length > 0){
-          $(".messages").empty();
-          messages.forEach(function(message){
-            var message_html = buildHTML(message);
-            $(".messages").append(message_html)
-          });
-          $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
-        }
-      });
-    },5000);
+    $.ajax({
+      url: $(location).attr('pathname'),
+      type: "GET",
+      dataType: 'json',
+      data: { last: myLastMessage }
+    })
+    .done(function(messages){
+      if (messages.length > 0){
+        messages.forEach(function(message){
+          var message_html = buildHTML(message);
+          $(".messages").append(message_html)
+        });
+        $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      }
+    });
   };
 
    $("#new_message").on('submit', function(e){
@@ -100,6 +97,6 @@ $(document).on('turbolinks:load', function() {
     });
   });
   if (document.URL.match(/messages/)){
-    autoLoad();
+    setInterval(autoLoad, 5000);
   };
 });
