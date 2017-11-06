@@ -4,15 +4,10 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     set_instance
-    if params[:last].present?
-      if  @group.messages.last.id > params[:message_id]
-        respond_to do |format|
-          format.html
-          format.json { render 'automatic_updating' }
-        end
-      else
-        render :new
-      end
+    @update_messages = @group.messages.includes(:user).where('id > ?', params[:last])
+    respond_to do |format|
+      format.html
+      format.json { render 'automatic_updating' ,handlers: 'jbuilder' }
     end
   end
 

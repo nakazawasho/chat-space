@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message){
-    var head = `<div class="message">
+    var head = `<div class="message" data-message-id="#{message.id}">
                   <div class="message__name-date">
                     <ul>
                       <li class="list-name">
@@ -46,12 +46,14 @@ $(document).on('turbolinks:load', function() {
         data: { last: myLastMessage }
       })
       .done(function(messages){
-        $(".messages").empty();
-        messages.forEach(function(message){
-          var message_html = buildHTML(message);
-          $(".messages").append(message_html)
-        });
-        $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+        if (messages.length > 0){
+          $(".messages").empty();
+          messages.forEach(function(message){
+            var message_html = buildHTML(message);
+            $(".messages").append(message_html)
+          });
+          $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+        }
       });
     },5000);
   };
@@ -73,12 +75,14 @@ $(document).on('turbolinks:load', function() {
       if (data.success != null){
         var success_html = `<div class="flash flash__notice">${data.success}</div>`;
         var html = buildHTML(data);
+
+        $(".flash").empty();
         $(".messages").append(html);
         $(".textarea").val('');
         $("#message_image").val('');
         $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
         $(".send-button").prop("disabled", false);
-        $(".chat-side").before(success_html)
+        $(".flash").append(success_html)
         $(".flash__notice:not(:animated)").fadeIn("slow",function(){
           $(this).delay(2000).fadeOut();
         });
