@@ -1,16 +1,16 @@
 $(document).on('turbolinks:load', function() {
-   function buildHTML(message){
-     var head = `<div class="message">
-                   <div class="message__name-date">
-                     <ul>
+  function buildHTML(message){
+    var head = `<div class="message" data-message-id="#{message.id}">
+                  <div class="message__name-date">
+                    <ul>
                       <li class="list-name">
-                         ${message.user_name}
+                        ${message.user_name}
+                      </li>
+                      <li class="list-date">
+                        ${message.created_time}
                        </li>
-                     <li class="list-date">
-                         ${message.created_time}
-                       </li>
-                     </ul>
-                   </div>`;
+                    </ul>
+                  </div>`;
      var foot = `</div>`;
      var contentAndMessage = `<div class="message__text">
                                <p>
@@ -34,10 +34,32 @@ $(document).on('turbolinks:load', function() {
        return head + image + foot;
      }
    };
+
+  function autoLoad(){
+    var myLastMessage = $(".message").last().data("message-id");
+
+    $.ajax({
+      url: $(location).attr('pathname'),
+      type: "GET",
+      dataType: 'json',
+      data: { last: myLastMessage }
+    })
+    .done(function(messages){
+      if (messages.length > 0){
+        messages.forEach(function(message){
+          var message_html = buildHTML(message);
+          $(".messages").append(message_html)
+        });
+        $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      }
+    });
+  };
+
    $("#new_message").on('submit', function(e){
      e.preventDefault();
      var formData = new FormData(this);
      var url = $(this).attr('action');
+
      $.ajax({
        url: url,
        type: "POST",
@@ -50,12 +72,14 @@ $(document).on('turbolinks:load', function() {
       if (data.success != null){
         var success_html = `<div class="flash flash__notice">${data.success}</div>`;
         var html = buildHTML(data);
+
+        $(".flash").empty();
         $(".messages").append(html);
         $(".textarea").val('');
         $("#message_image").val('');
         $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
         $(".send-button").prop("disabled", false);
-        $(".chat-side").before(success_html)
+        $(".flash").append(success_html)
         $(".flash__notice:not(:animated)").fadeIn("slow",function(){
           $(this).delay(2000).fadeOut();
         });
@@ -72,4 +96,7 @@ $(document).on('turbolinks:load', function() {
       $('.send-button').prop("disabled", false);
     });
   });
+  if (document.URL.match(/messages/)){
+    setInterval(autoLoad, 5000);
+  };
 });
