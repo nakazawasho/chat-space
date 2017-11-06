@@ -2,11 +2,12 @@ class MessagesController < ApplicationController
   before_action :check_message, only: [:new, :create]
 
   def new
-    @groups = current_user.groups
-    @group = Group.find(params[:group_id])
-    @messages = @group.messages.includes(:user)
     @message = Message.new
-    @users = @group.users
+    set_instance
+    respond_to do |format|
+      format.html
+      format.json { render 'automatic_updating' }
+    end
   end
 
   def create
@@ -34,7 +35,7 @@ class MessagesController < ApplicationController
   def set_instance
       @groups = current_user.groups
       @group = Group.find(params[:group_id])
-      @messages = @group.messages
+      @messages = @group.messages.includes(:user)
       @users = Group.find(params[:group_id]).users
   end
 end

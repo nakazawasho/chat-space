@@ -1,16 +1,16 @@
 $(document).on('turbolinks:load', function() {
-   function buildHTML(message){
-     var head = `<div class="message">
-                   <div class="message__name-date">
-                     <ul>
+  function buildHTML(message){
+    var head = `<div class="message">
+                  <div class="message__name-date">
+                    <ul>
                       <li class="list-name">
-                         ${message.user_name}
+                        ${message.user_name}
+                      </li>
+                      <li class="list-date">
+                        ${message.created_time}
                        </li>
-                     <li class="list-date">
-                         ${message.created_time}
-                       </li>
-                     </ul>
-                   </div>`;
+                    </ul>
+                  </div>`;
      var foot = `</div>`;
      var contentAndMessage = `<div class="message__text">
                                <p>
@@ -38,6 +38,7 @@ $(document).on('turbolinks:load', function() {
      e.preventDefault();
      var formData = new FormData(this);
      var url = $(this).attr('action');
+
      $.ajax({
        url: url,
        type: "POST",
@@ -72,4 +73,21 @@ $(document).on('turbolinks:load', function() {
       $('.send-button').prop("disabled", false);
     });
   });
+  setInterval(function(){
+    $.ajax({
+      url: $(location).attr('pathname'),
+      type: "GET",
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(messages){
+      $(".messages").empty();
+      messages.forEach(function(message){
+        var message_html = buildHTML(message);
+        $(".messages").append(message_html)
+      });
+      $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+    });
+  },10000);
 });
