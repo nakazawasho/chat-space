@@ -34,6 +34,28 @@ $(document).on('turbolinks:load', function() {
        return head + image + foot;
      }
    };
+
+  function autoLoad(messages){
+    setInterval(function(messages){
+      var myLastMessage = $(".message").last().data("message-id");
+
+      $.ajax({
+        url: $(location).attr('pathname'),
+        type: "GET",
+        dataType: 'json',
+        data: { last: myLastMessage }
+      })
+      .done(function(messages){
+        $(".messages").empty();
+        messages.forEach(function(message){
+          var message_html = buildHTML(message);
+          $(".messages").append(message_html)
+        });
+        $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
+      });
+    },5000);
+  };
+
    $("#new_message").on('submit', function(e){
      e.preventDefault();
      var formData = new FormData(this);
@@ -73,21 +95,7 @@ $(document).on('turbolinks:load', function() {
       $('.send-button').prop("disabled", false);
     });
   });
-  setInterval(function(){
-    $.ajax({
-      url: $(location).attr('pathname'),
-      type: "GET",
-      dataType: 'json',
-      processData: false,
-      contentType: false
-    })
-    .done(function(messages){
-      $(".messages").empty();
-      messages.forEach(function(message){
-        var message_html = buildHTML(message);
-        $(".messages").append(message_html)
-      });
-      $(".chat-main__body").animate({scrollTop: $(".messages:last-child")[0].scrollHeight}, 'slow');
-    });
-  },10000);
+  if (document.URL.match(/messages/)){
+    autoLoad();
+  };
 });
