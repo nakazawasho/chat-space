@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(message_params)
     if @message.save
+      binding.pry
       respond_to do |format|
         format.html { redirect_to new_group_message_path  }
         format.json { render 'success', handers: 'jbuilder' }
