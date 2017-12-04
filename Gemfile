@@ -21,6 +21,8 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'uglifier'
+gem 'omniauth-facebook'
+gem "omniauth"
 
 group :development, :test do
   gem 'byebug', platform: :mri
